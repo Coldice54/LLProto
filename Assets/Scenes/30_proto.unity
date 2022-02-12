@@ -128,8 +128,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1000014021913142, guid: 6e160064d4d12e446ab9ded16202c5e9, type: 3}
   m_PrefabInstance: {fileID: 1777481105}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &28892011
-BoxCollider:
+--- !u!64 &28892011
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -138,9 +138,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.174358, y: 16.000006, z: 4.3119426}
-  m_Center: {x: 5.912826, y: 8.000003, z: 2.1559103}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: a7bf09e66f48b454494b6f1e2cd639cb, type: 3}
 --- !u!4 &29807781 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010789623126, guid: 3d9ca007354fad74bbe70fecf9fe9262, type: 3}
@@ -680,8 +681,12 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4000011057169914, guid: 7669a0789790ecb4480d6fbcbe922158, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2147
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011057169914, guid: 7669a0789790ecb4480d6fbcbe922158, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -43
+      value: -41.51
       objectReference: {fileID: 0}
     - target: {fileID: 4000011057169914, guid: 7669a0789790ecb4480d6fbcbe922158, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1180,8 +1185,12 @@ PrefabInstance:
       value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4000011057169914, guid: 7669a0789790ecb4480d6fbcbe922158, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2147
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011057169914, guid: 7669a0789790ecb4480d6fbcbe922158, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -43.06
+      value: -41.57
       objectReference: {fileID: 0}
     - target: {fileID: 4000011057169914, guid: 7669a0789790ecb4480d6fbcbe922158, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2707,6 +2716,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000010789623126, guid: 3d9ca007354fad74bbe70fecf9fe9262, type: 3}
   m_PrefabInstance: {fileID: 73083884}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &876595260 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000013506888524, guid: c78107076ebd98c47a45887e83d188c9, type: 3}
+  m_PrefabInstance: {fileID: 901568862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &876595264
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876595260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: c6afddd458be8c240a555204336b15b7, type: 3}
 --- !u!4 &887266160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013480976020, guid: 1bb5689aff5896c44a2c10801d1d1423, type: 3}
@@ -5026,6 +5054,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 607314d96864be34ab86da1f60d6a2df, type: 3}
+--- !u!1 &1622015008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000013496796366, guid: d030c7288383dbf4b9a7641406e71c76, type: 3}
+  m_PrefabInstance: {fileID: 1026884605}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1622015012
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622015008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 3119a94d80cea91419e6ce00f3bf9d01, type: 3}
 --- !u!1001 &1622090589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5266,7 +5313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8748688856612009363, guid: 0e74cf81e6fd82546b4797f71ceffb81, type: 3}
       propertyPath: m_jumpForce
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8748688856612009363, guid: 0e74cf81e6fd82546b4797f71ceffb81, type: 3}
       propertyPath: m_moveSpeed
