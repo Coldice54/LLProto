@@ -8,7 +8,7 @@ public class moveWeight : MonoBehaviour
     // Start is called before the first frame update
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             isNotOnMovingPlatform = false;
             collision.gameObject.transform.SetParent(transform);
@@ -19,7 +19,7 @@ public class moveWeight : MonoBehaviour
     // Update is called once per frame
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             isNotOnMovingPlatform = true;
             collision.gameObject.transform.SetParent(null);
