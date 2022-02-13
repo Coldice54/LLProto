@@ -140,8 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1c8bf50ee772d43b40b0968ec62c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 746943983}
-  focus: {fileID: 0}
   eyes: {fileID: 2066471268}
 --- !u!1 &213691786
 GameObject:
@@ -175,7 +173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f60f24fb9a20349b77be10aee78a8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFocus: 0
+  interactionRadius: 3
+  focusMat: {fileID: 2100000, guid: 0d97c63033de0d045b98cc6669ef35cb, type: 2}
+  defocusMat: {fileID: 2100000, guid: 0d7f6896a7ceca84fa7e9c79c90c026b, type: 2}
 --- !u!135 &213691788
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -563,7 +563,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f60f24fb9a20349b77be10aee78a8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFocus: 0
+  interactionRadius: 3
+  focusMat: {fileID: 2100000, guid: 0d97c63033de0d045b98cc6669ef35cb, type: 2}
+  defocusMat: {fileID: 2100000, guid: 0d7f6896a7ceca84fa7e9c79c90c026b, type: 2}
 --- !u!135 &1138165799
 SphereCollider:
   m_ObjectHideFlags: 0

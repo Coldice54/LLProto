@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
             Interactable interactable = hit.collider.GetComponent<Interactable>();
             if (interactable != null && interactable.TryFocusOn(hit.distance)) {
                 SetFocus(interactable);
+            } else {
+                RemoveFocus();
             }
         } else {
             RemoveFocus();

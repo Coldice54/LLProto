@@ -2,13 +2,23 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    float interactionRadius = 3f;
+    [SerializeField] float interactionRadius = 3f;
 
     bool isFocus = false;
 
     bool hasInteracted = false;
 
     GameObject player;
+
+    public Material focusMat;
+
+    public Material defocusMat;
+
+    Renderer rend;
+    
+    private void Start() {
+        rend = GetComponent<Renderer>();
+    }
 
     public virtual void Interact () {
         Debug.Log("interacting");
@@ -20,6 +30,12 @@ public class Interactable : MonoBehaviour
                 Interact();
                 hasInteracted = true;
             }
+        }
+
+        if (isFocus) {
+            rend.material = focusMat;
+        } else {
+            rend.material = defocusMat;
         }
     }
 
