@@ -11,7 +11,7 @@ public class moveWeight : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isNotOnMovingPlatform = false;
-            collision.gameObject.transform.SetParent(transform);
+            gameObject.transform.SetParent(collision.gameObject.transform);
 
         }
     }
@@ -22,7 +22,7 @@ public class moveWeight : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isNotOnMovingPlatform = true;
-            collision.gameObject.transform.SetParent(null);
+            gameObject.transform.SetParent(null);
         }
     }
 }
