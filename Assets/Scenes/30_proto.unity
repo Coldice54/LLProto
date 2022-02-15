@@ -6321,6 +6321,10 @@ PrefabInstance:
       propertyPath: btn2
       value: 
       objectReference: {fileID: 1654533788}
+    - target: {fileID: 3579507639249760679, guid: 9c3c2a76b02c67746967971ae3d800e4, type: 3}
+      propertyPath: weight
+      value: 
+      objectReference: {fileID: 1197345848}
     - target: {fileID: 3579507639820019824, guid: 9c3c2a76b02c67746967971ae3d800e4, type: 3}
       propertyPath: m_LocalPosition.y
       value: 35
@@ -6781,6 +6785,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1197345848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1528730059017165869, guid: 0ef68313444adfc4e8201b9b44b6eab1, type: 3}
+  m_PrefabInstance: {fileID: 1185224485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1197579610
 PrefabInstance:
   m_ObjectHideFlags: 0

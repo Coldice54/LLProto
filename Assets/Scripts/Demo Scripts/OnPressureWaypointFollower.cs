@@ -13,12 +13,12 @@ public class OnPressureWaypointFollower : MonoBehaviour
     //[SerializeField] Vector3 objectMotion;
     [SerializeField] float speed = 1f;
 
-    public DoorButton btn1;
-    public DoorButton btn2;
+    //public DoorButton btn1;
+    //public DoorButton btn2;
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.name == "Weight" && btn1.isLit && btn2.isLit)
+        if (collider.gameObject.name == "Weight")
         {
             movingObject.transform.position = Vector3.MoveTowards(waypoints[1].transform.position, waypoints[0].transform.position, speed * Time.deltaTime);
         }
