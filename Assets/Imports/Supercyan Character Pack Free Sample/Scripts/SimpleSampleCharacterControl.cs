@@ -18,6 +18,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     [SerializeField] private float m_moveSpeed = 2;
     [SerializeField] private float m_turnSpeed = 200;
     [SerializeField] private float m_jumpForce = 4;
+    [SerializeField] private float m_jumpDownForce = 4;
 
     [SerializeField] private Animator m_animator = null;
     [SerializeField] private Rigidbody m_rigidBody = null;
@@ -206,6 +207,15 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         {
             m_jumpTimeStamp = Time.time;
             m_rigidBody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
+        }
+
+        if (!m_isGrounded && m_rigidBody.velocity.y < 0)
+        {
+            m_rigidBody.AddForce(Vector3.down * m_jumpDownForce * 2);
+        }
+        else if (!m_isGrounded && m_rigidBody.velocity.y > 0)
+        {
+            m_rigidBody.AddForce(Vector3.down * m_jumpDownForce);
         }
 
         if (!m_wasGrounded && m_isGrounded)
