@@ -14,7 +14,7 @@ public class Interactable : MonoBehaviour
 
     public Material defocusMat;
 
-    Renderer rend;
+    protected Renderer rend;
     
     private void Start() {
         rend = GetComponent<Renderer>();
