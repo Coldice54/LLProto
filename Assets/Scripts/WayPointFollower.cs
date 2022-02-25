@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class WayPointFollower : MonoBehaviour
 {
-    // Start is called before the first frame update
-    /*void Start()
-    {
-        
-    }*/
-
     [SerializeField] GameObject[] waypoints;
     int currentWaypointIndex = 0;
+    Rigidbody rb;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     [SerializeField] float speed = 1f;
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex].transform.position) < .1f)
         {
@@ -25,6 +26,6 @@ public class WayPointFollower : MonoBehaviour
                 currentWaypointIndex = 0;
             }
         }
-        transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, speed * Time.deltaTime);
+        rb.MovePosition(Vector3.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, speed * Time.fixedDeltaTime));
     }
 }
