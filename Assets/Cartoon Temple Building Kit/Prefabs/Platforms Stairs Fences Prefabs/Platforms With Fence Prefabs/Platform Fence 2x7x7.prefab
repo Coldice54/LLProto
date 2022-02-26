@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4000011057169914}
   - component: {fileID: 33000010412609222}
   - component: {fileID: 23000011685508084}
+  - component: {fileID: 7241543745366257665}
+  - component: {fileID: 8424846293338833128}
   m_Layer: 0
   m_Name: Platform Fence 2x7x7
   m_TagString: Untagged
@@ -81,3 +83,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7241543745366257665
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000012343110208}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.43, y: 7.226523, z: 14.735311}
+  m_Center: {x: 5.7, y: 3.6132352, z: -0.000045776374}
+--- !u!65 &8424846293338833128
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000012343110208}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 14.36767, y: 3.85, z: 14.735311}
+  m_Center: {x: 0.1838303, y: 2.12, z: -0.000045776374}
