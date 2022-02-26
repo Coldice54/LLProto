@@ -25,6 +25,8 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     [SerializeField] private ControlMode m_controlMode = ControlMode.Direct;
 
+    [SerializeField] private AudioSource playerDyingSound;
+
     private float m_currentV = 0;
     private float m_currentH = 0;
 
@@ -134,6 +136,18 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
         m_wasGrounded = m_isGrounded;
         m_jumpInput = false;
+
+        if (transform.position.y < -23.5f)
+        {
+            float zPos = transform.position.z;
+            float xPos = transform.position.x;
+            gameObject.SetActive(false);
+            //when we find the particle effectsc:
+            //particalSystem.gameObject.transform.position = transform.position;
+            //particalSystem.gameObject.SetActive(true);
+            playerDyingSound.Play();
+            FindObjectOfType<GameManager>().Respawn(xPos, zPos);
+        }
     }
 
     private void TankUpdate()
