@@ -77,6 +77,7 @@ public class PlayerSizeChange2 : MonoBehaviour
                 {
                     transform.localScale = initialScale;
                     charController.m_jumpForce = initialJumpForce;
+                    charController.m_jumpDownForce = initialDownForce;
                     break;
                 }
             case Size.Large:
