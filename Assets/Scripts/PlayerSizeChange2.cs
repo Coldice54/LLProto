@@ -16,6 +16,7 @@ public class PlayerSizeChange2 : MonoBehaviour
     Vector3 initialScale;
     float initialJumpForce;
     float initialDownForce;
+    public bool touchingSizePlatform;
 
     // Start is called before the first frame update
     void Start()
@@ -23,17 +24,18 @@ public class PlayerSizeChange2 : MonoBehaviour
         initialScale = transform.localScale;
         initialJumpForce = charController.m_jumpForce;
         initialDownForce = charController.m_jumpDownForce;
+        touchingSizePlatform = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("q"))
+        if (Input.GetKeyDown("q") && touchingSizePlatform)
         {
             grow();
             updateSize();
         }
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("e") && touchingSizePlatform)
         {
             shrink();
             updateSize();
@@ -87,6 +89,22 @@ public class PlayerSizeChange2 : MonoBehaviour
                     charController.m_jumpDownForce = initialDownForce + 15;
                     break;
                 }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("SizePlatform"))
+        {
+            touchingSizePlatform = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("SizePlatform"))
+        {
+            touchingSizePlatform = false;
         }
     }
 }
