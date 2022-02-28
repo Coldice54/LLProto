@@ -19,6 +19,8 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     [SerializeField] private float m_turnSpeed = 200;
     [SerializeField] private float m_jumpForce = 4;
     [SerializeField] private float m_jumpDownForce = 4;
+    [SerializeField] private float m_moveForce = 10;
+    [SerializeField] private bool m_moveWithForce = true;
 
     [SerializeField] private Animator m_animator = null;
     [SerializeField] private Rigidbody m_rigidBody = null;
@@ -205,7 +207,22 @@ public class SimpleSampleCharacterControl : MonoBehaviour
             m_currentDirection = Vector3.Slerp(m_currentDirection, direction, Time.deltaTime * m_interpolation);
 
             transform.rotation = Quaternion.LookRotation(m_currentDirection);
-            transform.position += m_currentDirection * m_moveSpeed * Time.deltaTime;
+            if (m_moveWithForce == false)
+            {
+                transform.position += m_currentDirection * m_moveSpeed * Time.deltaTime;
+
+            }
+            else
+            {
+                Vector3 velocityChange = m_currentDirection * m_moveSpeed - m_rigidBody.velocity;
+
+                velocityChange.y = 0;
+
+                m_rigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
+            }
+            //m_rigidBody.velocity = m_currentDirection * m_moveSpeed * Time.deltaTime;
+            //if (!Input.anyKey){
+            // m_rigidBody.velocity = Vector3.zero;}
 
             m_animator.SetFloat("MoveSpeed", direction.magnitude);
         }
