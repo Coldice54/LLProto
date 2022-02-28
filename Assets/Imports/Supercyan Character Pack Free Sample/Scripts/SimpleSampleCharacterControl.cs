@@ -17,13 +17,17 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     [SerializeField] private float m_moveSpeed = 2;
     [SerializeField] private float m_turnSpeed = 200;
-    [SerializeField] public float m_jumpForce = 4;
-    [SerializeField] public float m_jumpDownForce = 4;
+    [SerializeField] private float m_jumpForce = 4;
+    [SerializeField] private float m_jumpDownForce = 4;
+    [SerializeField] private float m_moveForce = 10;
+    [SerializeField] private bool m_moveWithForce = true;
 
     [SerializeField] private Animator m_animator = null;
     [SerializeField] private Rigidbody m_rigidBody = null;
 
     [SerializeField] private ControlMode m_controlMode = ControlMode.Direct;
+
+    [SerializeField] private AudioSource playerDyingSound;
 
     private float m_currentV = 0;
     private float m_currentH = 0;
@@ -134,6 +138,18 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
         m_wasGrounded = m_isGrounded;
         m_jumpInput = false;
+
+        if (transform.position.y < -23.5f)
+        {
+            float zPos = transform.position.z;
+            float xPos = transform.position.x;
+            gameObject.SetActive(false);
+            //when we find the particle effectsc:
+            //particalSystem.gameObject.transform.position = transform.position;
+            //particalSystem.gameObject.SetActive(true);
+            playerDyingSound.Play();
+            FindObjectOfType<GameManager>().Respawn(xPos, zPos);
+        }
     }
 
     private void TankUpdate()
@@ -191,7 +207,22 @@ public class SimpleSampleCharacterControl : MonoBehaviour
             m_currentDirection = Vector3.Slerp(m_currentDirection, direction, Time.deltaTime * m_interpolation);
 
             transform.rotation = Quaternion.LookRotation(m_currentDirection);
-            transform.position += m_currentDirection * m_moveSpeed * Time.deltaTime;
+            if (m_moveWithForce == false)
+            {
+                transform.position += m_currentDirection * m_moveSpeed * Time.deltaTime;
+
+            }
+            else
+            {
+                Vector3 velocityChange = m_currentDirection * m_moveSpeed - m_rigidBody.velocity;
+
+                velocityChange.y = 0;
+
+                m_rigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
+            }
+            //m_rigidBody.velocity = m_currentDirection * m_moveSpeed * Time.deltaTime;
+            //if (!Input.anyKey){
+            // m_rigidBody.velocity = Vector3.zero;}
 
             m_animator.SetFloat("MoveSpeed", direction.magnitude);
         }
