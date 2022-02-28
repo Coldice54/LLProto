@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     float playerX = 0f;
     float playerZ = 0f;
     public GameObject player;
+    [SerializeField] PlayerSizeChange2 sizeScript;
 
     public void Respawn(float xPos, float zPos){
 
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
         //particalSystem.gameObject.SetActive(false);
 
         Vector3 respawnPosition;
-        
+
         // if (playerX <= 370f){
         //     respawnPosition = new Vector3(0,0,0);
         // } else if (playerX <= 715f){
@@ -34,7 +35,8 @@ public class GameManager : MonoBehaviour
         //     respawnPosition = new Vector3(0, 0, 1030f);
         // }
 
-        respawnPosition = new Vector3(-6f, 1f, -21f);
+        respawnPosition = new Vector3(42.9399986f, 0.718818665f, -35.8012772f);
+        sizeScript.resetSize();
 
         player.transform.position = respawnPosition;
         player.SetActive(true);

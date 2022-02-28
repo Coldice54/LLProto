@@ -17,8 +17,8 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     [SerializeField] private float m_moveSpeed = 2;
     [SerializeField] private float m_turnSpeed = 200;
-    [SerializeField] private float m_jumpForce = 4;
-    [SerializeField] private float m_jumpDownForce = 4;
+    [SerializeField] public float m_jumpForce = 4;
+    [SerializeField] public float m_jumpDownForce = 4;
     [SerializeField] private float m_moveForce = 10;
     [SerializeField] private bool m_moveWithForce = true;
 

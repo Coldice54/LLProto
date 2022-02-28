@@ -107,4 +107,10 @@ public class PlayerSizeChange2 : MonoBehaviour
             touchingSizePlatform = false;
         }
     }
+
+    public void resetSize()
+    {
+        playerSize = Size.Regular;
+        updateSize();
+    }
 }
