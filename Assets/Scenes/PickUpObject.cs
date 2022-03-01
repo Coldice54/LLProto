@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PickUpObject : MonoBehaviour
 {
-    public GameObject myHands; //reference to your hands/the position where you want your object to go
     bool canpickup; //a bool to see if you can or cant pick up the item
     GameObject ObjectIwantToPickUp; // the gameobject onwhich you collided with
     bool hasItem = false; // a bool to see if you have an item in your hand
                           // Start is called before the first frame update
     public GameObject eyes; //eyes from which ray is drawn
-    public GameObject hands;
+    public GameObject hands; //reference to your hands/the position where you want your object to go
     private GameObject pickedUpObject;
 
     private void Start()
@@ -42,8 +41,7 @@ public class PickUpObject : MonoBehaviour
                         pickedUpObject.transform.position = hands.transform.position - transform.forward;
                         pickedUpObject.transform.SetParent(hands.transform, true);
                         pickedUpObject.GetComponent<Rigidbody>().useGravity = false;
-                        pickedUpObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY |
-                            RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionX;
+                        pickedUpObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                         hasItem = true;
                     }
                 }
@@ -53,6 +51,7 @@ public class PickUpObject : MonoBehaviour
                 Debug.Log("about to drop item");
                 pickedUpObject.transform.SetParent(null);
                 pickedUpObject.GetComponent<Rigidbody>().useGravity = true;
+                pickedUpObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 hasItem = false;
             }
 
