@@ -12,6 +12,10 @@ public class PickUpObject : MonoBehaviour
     public GameObject hands; //reference to your hands/the position where you want your object to go
     private GameObject pickedUpObject;
 
+    public Material focusMat;
+    public Material defocusMat;
+    protected Renderer rend;
+
     private void Start()
     {
 
@@ -20,21 +24,36 @@ public class PickUpObject : MonoBehaviour
     private void Update()
     {
         Ray ray = new Ray(eyes.transform.position, this.transform.forward);
-        Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
+        Debug.DrawRay(ray.origin, ray.direction, Color.yellow);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+
+            if (hit.collider.gameObject.tag == "Pickup" && hit.distance < 5)
+            {
+                rend = hit.collider.gameObject.GetComponent<Renderer>();
+                rend.material = focusMat;
+            }
+            else
+            {
+                if(rend){rend.material = defocusMat; }
+            }
+        }
 
         if (Input.GetKeyDown("r"))
         {
 
             if (hasItem == false)
             {
-                RaycastHit hit;
-                Debug.Log("about to ray cast");
+                
                 if (Physics.Raycast(ray, out hit))
                 {
                     Debug.Log("we have a hit");
                     Debug.Log(hit.collider.gameObject.tag);
-                    if (hit.collider.gameObject.tag == "Pickup")
+                    if (hit.collider.gameObject.tag == "Pickup" && hit.distance<5)
                     { //add collider reference otherwise you can't access gameObject!
+                        
                         Debug.Log("hit on pickup obj");
                         pickedUpObject = hit.collider.gameObject;
                         //pickedUpObject.transform.parent = hands.transform;
@@ -56,6 +75,7 @@ public class PickUpObject : MonoBehaviour
             }
 
         }
+        
 
     }
 
