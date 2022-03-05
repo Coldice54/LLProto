@@ -4,48 +4,38 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     float checkpointDelay = 3f;
-    float playerX = 0f;
-    float playerZ = 0f;
+    Vector3 checkpointCord;
     public GameObject player;
     [SerializeField] PlayerSizeChange2 sizeScript;
 
-    public void Respawn(float xPos, float zPos){
-
-        playerX = xPos;
-        playerZ = zPos;
-        Invoke("FromCheckpoint", checkpointDelay);
-        
+    private void Start() {
+        checkpointCord = player.gameObject.transform.position;
     }
 
-    private void FromCheckpoint(){
+    public void Respawn() {
+        Invoke("FromCheckpoint", checkpointDelay);
+    }
+
+    public void updateCheckpoint(Vector3 cord) {
+        checkpointCord = cord;
+    }
+
+    private void FromCheckpoint() {
         //for player death particle effect
         //particalSystem.gameObject.SetActive(false);
 
-        Vector3 respawnPosition;
-
-        // if (playerX <= 370f){
-        //     respawnPosition = new Vector3(0,0,0);
-        // } else if (playerX <= 715f){
-        //     respawnPosition = new Vector3(2.25f, 0, 367.71f);
-        // } else if (playerX <= 927f){
-        //     respawnPosition = new Vector3(-0.82f, 0, 715.37f);
-        // } else if (playerX <= 1036f){
-        //     respawnPosition = new Vector3(0, 0, 930f);
-        // } else {
-        //     respawnPosition = new Vector3(0, 0, 1030f);
-        // }
-
-        respawnPosition = new Vector3(42.9399986f, 0.718818665f, -35.8012772f);
         sizeScript.resetSize();
 
-        player.transform.position = respawnPosition;
+        player.transform.position = checkpointCord;
         player.SetActive(true);
     }
+
     private void Update() {
-        if(Input.GetKeyUp("escape")){
+        if(Input.GetKeyUp("escape")) {
             Invoke("Restart", 0.5f);
         }
     }
+
     void Restart() {
         SceneManager.LoadScene(0);
     }
