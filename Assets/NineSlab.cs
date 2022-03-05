@@ -3,6 +3,7 @@ using UnityEngine;
 public class NineSlab : MonoBehaviour
 {
     public Slab[] slabs;
+    public GameObject door;
 
     public void interact(int index){
         int left = (Mathf.Floor((index - 1)/3) ==  Mathf.Floor(index/3)) ? (index - 1) : -1;
@@ -29,7 +30,7 @@ public class NineSlab : MonoBehaviour
         }
 
         if(slabsLight == 9){
-            Debug.Log("complete :)");
+            door.SetActive(false);
         }
     }
 }
