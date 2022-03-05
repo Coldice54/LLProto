@@ -28,6 +28,9 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     [SerializeField] private ControlMode m_controlMode = ControlMode.Direct;
 
     [SerializeField] private AudioSource playerDyingSound;
+    [SerializeField] private AudioSource walkingSound;
+    [SerializeField] private AudioSource[] jumpSounds;
+    [SerializeField] private AudioSource[] landSounds;
 
     private float m_currentV = 0;
     private float m_currentH = 0;
@@ -205,7 +208,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         if (direction != Vector3.zero)
         {
             m_currentDirection = Vector3.Slerp(m_currentDirection, direction, Time.deltaTime * m_interpolation);
-
+            
             transform.rotation = Quaternion.LookRotation(m_currentDirection);
             if (m_moveWithForce == false)
             {
@@ -237,6 +240,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         if (jumpCooldownOver && m_isGrounded && m_jumpInput)
         {
             m_jumpTimeStamp = Time.time;
+            (jumpSounds[Random.Range(0, 5)]).Play();
             m_rigidBody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
         }
 
@@ -252,6 +256,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         if (!m_wasGrounded && m_isGrounded)
         {
             m_animator.SetTrigger("Land");
+            (landSounds[Random.Range(0, 5)]).Play();
         }
 
         if (!m_isGrounded && m_wasGrounded)
