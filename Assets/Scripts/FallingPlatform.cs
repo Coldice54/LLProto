@@ -1,16 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingPlatform : MonoBehaviour
+public class FallingPlatform : Respawnable
 {
     bool falling = false;
     float downSpeed = 0f;
+    Vector3 originalPosition;
+
+    private void Start() {
+        originalPosition = transform.position;
+    }
 
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.tag == "Player"){
             falling = true;
         }
+    }
+
+    public override void resetGameObject(){
+        falling = false;
+        transform.position = originalPosition;
     }
 
     private void Update() {
