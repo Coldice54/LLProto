@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
         //particalSystem.gameObject.SetActive(false);
 
         sizeScript.resetSize();
-
         player.transform.position = checkpointCord;
         player.SetActive(true);
     }
