@@ -17,10 +17,8 @@ public class LiftOnCompletion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(transform.position.y);
         if (leaf.active && cross.active && sun.active && transform.localPosition.y < -390)
         {
-            print("done");
             transform.position += Vector3.up * 0.1f;
         }
     }
