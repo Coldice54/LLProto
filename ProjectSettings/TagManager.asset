@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FxTemporaire
   - SizePlatform
+  - Pickup
   layers:
   - Default
   - TransparentFX
