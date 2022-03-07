@@ -2,19 +2,10 @@ using UnityEngine;
 
 public class OnPressureWaypointFollower : MonoBehaviour
 {
-    /*
-    void Start()
-    {
-        
-    }*/
     [SerializeField] GameObject movingObject;
     [SerializeField] GameObject[] waypoints;
     [SerializeField] GameObject weight;
-    //[SerializeField] Vector3 objectMotion;
     [SerializeField] float speed = 1f;
-
-    //public DoorButton btn1;
-    //public DoorButton btn2;
 
     private void OnTriggerEnter(Collider collider)
     {
