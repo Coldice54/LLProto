@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     [SerializeField] Respawnable[] respawnables;
     [SerializeField] PlayerSizeChange2 sizeScript;
+    [SerializeField] Canvas pauseUI;
 
     private void Start() {
         checkpointCord = player.gameObject.transform.position;
@@ -43,12 +44,12 @@ public class GameManager : MonoBehaviour
 
     private void Update() {
         if(Input.GetKeyUp("escape")) {
-            Invoke("Restart", 0.5f);
+            Invoke("Pause", 0.2f);
         }
     }
 
-    void Restart() {
-        SceneManager.LoadScene(0);
+    private void Pause() {
+        pauseUI.enabled = true;
     }
 
     public void LevelComplete() {
