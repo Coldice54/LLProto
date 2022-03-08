@@ -5,10 +5,11 @@ public class GameManager : MonoBehaviour
 {
     float checkpointDelay = 3f;
     Vector3 checkpointCord;
+    bool gamePaused = false;
     public GameObject player;
     [SerializeField] Respawnable[] respawnables;
     [SerializeField] PlayerSizeChange2 sizeScript;
-    [SerializeField] Canvas pauseUI;
+    [SerializeField] GameObject pauseUI;
 
     private void Start() {
         checkpointCord = player.gameObject.transform.position;
@@ -44,12 +45,24 @@ public class GameManager : MonoBehaviour
 
     private void Update() {
         if(Input.GetKeyUp("escape")) {
-            Invoke("Pause", 0.2f);
+            if(gamePaused) {
+                Resume();
+            } else {
+                Pause();
+            }
         }
     }
 
     private void Pause() {
-        pauseUI.enabled = true;
+        pauseUI.SetActive(true);
+        Time.timeScale = 0f;
+        gamePaused = true;
+    }
+
+    public void Resume() {
+        pauseUI.SetActive(false);
+        Time.timeScale = 1f;
+        gamePaused = false;
     }
 
     public void LevelComplete() {

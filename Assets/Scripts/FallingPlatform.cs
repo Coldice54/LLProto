@@ -23,7 +23,7 @@ public class FallingPlatform : Respawnable
 
     private void Update() {
         if (falling == true){
-            downSpeed -= Time.deltaTime * 0.1f;
+            downSpeed -= Time.deltaTime * 0.5f;
             transform.position = new Vector3(transform.position.x, transform.position.y + downSpeed, transform.position.z);
 
         }
