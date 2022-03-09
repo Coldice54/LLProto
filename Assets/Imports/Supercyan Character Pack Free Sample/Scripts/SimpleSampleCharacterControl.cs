@@ -28,6 +28,12 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     [SerializeField] private ControlMode m_controlMode = ControlMode.Direct;
 
     [SerializeField] private AudioSource playerDyingSound;
+    [SerializeField] private AudioClip[] jumpClips;
+    [SerializeField] private AudioClip[] runClips;
+    [SerializeField] private AudioClip[] landClips;
+    [SerializeField] private AudioClip[] walkClips;
+    private AudioSource audioSource;
+    private AudioClip clip;
 
     private float m_currentV = 0;
     private float m_currentH = 0;
@@ -53,6 +59,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         if (!m_animator) { gameObject.GetComponent<Animator>(); }
         if (!m_rigidBody) { gameObject.GetComponent<Animator>(); }
         Cursor.visible = false;
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -257,5 +264,41 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         {
             m_animator.SetTrigger("Jump");
         }
+    }
+    private void StepRun()
+    {
+        clip = GetRandomRunClip();
+        audioSource.PlayOneShot(clip);
+    }
+    private void StepWalk()
+    {
+        clip = GetRandomWalkClip();
+        audioSource.PlayOneShot(clip);
+    }
+    private void Jump()
+    {
+        clip = GetRandomJumpClip();
+        audioSource.PlayOneShot(clip);
+    }
+    private void Land()
+    {
+        clip = GetRandomLandClip();
+        audioSource.PlayOneShot(clip);
+    }
+    private AudioClip GetRandomRunClip()
+    {
+        return runClips[UnityEngine.Random.Range(0, runClips.Length)];
+    }
+    private AudioClip GetRandomWalkClip()
+    {
+        return walkClips[UnityEngine.Random.Range(0, walkClips.Length)];
+    }
+    private AudioClip GetRandomJumpClip()
+    {
+        return jumpClips[UnityEngine.Random.Range(0, jumpClips.Length)];
+    }
+    private AudioClip GetRandomLandClip()
+    {
+        return landClips[UnityEngine.Random.Range(0, landClips.Length)];
     }
 }
