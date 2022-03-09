@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LiftOnCompletion : MonoBehaviour
@@ -7,19 +5,14 @@ public class LiftOnCompletion : MonoBehaviour
     [SerializeField] SymbolActive leaf;
     [SerializeField] SymbolActive cross;
     [SerializeField] SymbolActive sun;
+    [SerializeField] PlayerInMainRoom player;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (leaf.active && cross.active && sun.active && transform.localPosition.y < -390)
+        if (leaf.active && cross.active && sun.active && transform.localPosition.y < -390 && player.inMainRoom)
         {
-            transform.position += Vector3.up * 0.1f;
+            transform.position += Vector3.up * 0.5f * Time.deltaTime;
         }
     }
 }

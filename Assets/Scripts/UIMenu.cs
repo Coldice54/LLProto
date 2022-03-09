@@ -11,10 +11,12 @@ public class UIMenu : MonoBehaviour
     }
 
     public void MainMenu() {
+        FindObjectOfType<GameManager>().Resume();
         SceneManager.LoadScene(0);
     }
 
     public void RestartLevel() {
+        FindObjectOfType<GameManager>().Resume();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

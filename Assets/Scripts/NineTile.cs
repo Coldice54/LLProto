@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class NineTile : MonoBehaviour
 {
-    public Tile[] tiles;
+    [SerializeField] Tile[] tiles;
     public GameObject door;
 
     public void interact(int index){

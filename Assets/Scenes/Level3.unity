@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3846908, g: 0.39704174, b: 0.38308793, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12258,7 +12258,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198690741}
-  m_LocalRotation: {x: 0.21365196, y: -0.000000018793124, z: 0.00000000411009, w: 0.9769099}
+  m_LocalRotation: {x: 0.21365196, y: 0.000000018793124, z: -0.00000000411009, w: 0.9769099}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -23422,7 +23422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &395580637
 Light:
   m_ObjectHideFlags: 0
@@ -64894,7 +64894,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220885997}
-  m_LocalRotation: {x: 0.21365194, y: -0.000000018793717, z: 0.0000000041091663, w: 0.9769099}
+  m_LocalRotation: {x: 0.21365194, y: 0.000000018793886, z: -0.000000004109924, w: 0.9769099}
   m_LocalPosition: {x: 248, y: 10.000017, z: -15.900001}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
@@ -96635,7 +96635,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877051842}
-  m_LocalRotation: {x: 0.2313861, y: 0.0000000034013565, z: -8.0898027e-10, w: 0.972862}
+  m_LocalRotation: {x: 0.23138613, y: 0.000000029192377, z: -0.0000000069431336, w: 0.972862}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -111316,7 +111316,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff3d147c1708e244886a432eff636ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiles: []
+  tiles:
+  - {fileID: 8339508473708497713}
+  - {fileID: 8339508473976224180}
+  - {fileID: 8339508473742333228}
+  - {fileID: 8339508474052586449}
+  - {fileID: 8339508474847859807}
+  - {fileID: 8339508473579810738}
+  - {fileID: 8339508474251903380}
+  - {fileID: 8339508474444972409}
+  - {fileID: 8339508473198945106}
   door: {fileID: 2007078861}
 --- !u!1 &8339508473965241628
 GameObject:
