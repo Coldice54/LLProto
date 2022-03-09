@@ -247,8 +247,6 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         {
             m_jumpTimeStamp = Time.time;
             m_rigidBody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
-            clip = GetRandomJumpClip();
-            audioSource.PlayOneShot(clip);
         }
 
         if (!m_isGrounded && m_rigidBody.velocity.y < 0)
@@ -263,8 +261,6 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         if (!m_wasGrounded && m_isGrounded)
         {
             m_animator.SetTrigger("Land");
-            clip = GetRandomLandClip();
-            audioSource.PlayOneShot(clip);
         }
 
         if (!m_isGrounded && m_wasGrounded)
@@ -280,6 +276,16 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     private void StepWalk()
     {
         clip = GetRandomWalkClip();
+        audioSource.PlayOneShot(clip);
+    }
+    private void Jump()
+    {
+        clip = GetRandomJumpClip();
+        audioSource.PlayOneShot(clip);
+    }
+    private void Land()
+    {
+        clip = GetRandomLandClip();
         audioSource.PlayOneShot(clip);
     }
     private AudioClip GetRandomRunClip()
