@@ -31,6 +31,10 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     [SerializeField] private AudioSource walkingSound;
     [SerializeField] private AudioSource[] jumpSounds;
     [SerializeField] private AudioSource[] landSounds;
+    [SerializeField] private AudioClip[] runClips;
+    private AudioSource audioSource;
+    private AudioClip runningClip;
+
 
     private float m_currentV = 0;
     private float m_currentH = 0;
@@ -53,6 +57,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         if (!m_animator) { gameObject.GetComponent<Animator>(); }
         if (!m_rigidBody) { gameObject.GetComponent<Animator>(); }
     }
@@ -264,4 +269,14 @@ public class SimpleSampleCharacterControl : MonoBehaviour
             m_animator.SetTrigger("Jump");
         }
     }
+    private void Step()
+    {
+        runningClip = GetRandomClip();
+        audioSource.PlayOneShot(runningClip);
+    }
+    private AudioClip GetRandomClip()
+    {
+        return runClips[UnityEngine.Random.Range(0, runClips.Length)];
+    }
 }
+
