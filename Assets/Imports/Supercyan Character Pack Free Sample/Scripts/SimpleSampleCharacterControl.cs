@@ -52,6 +52,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     {
         if (!m_animator) { gameObject.GetComponent<Animator>(); }
         if (!m_rigidBody) { gameObject.GetComponent<Animator>(); }
+        Cursor.visible = false;
     }
 
     private void OnCollisionEnter(Collision collision)
