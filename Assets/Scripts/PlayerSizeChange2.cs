@@ -14,12 +14,13 @@ public class PlayerSizeChange2 : MonoBehaviour
     public Size playerSize = Size.Regular;
     [SerializeField] SimpleSampleCharacterControl charController;
     Vector3 initialScale;
-    float initialJumpForce;
-    float initialDownForce;
+
+    public float initialJumpForce;
+    public float initialDownForce;
     public bool touchingSizePlatform;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         initialScale = transform.localScale;
         initialJumpForce = charController.m_jumpForce;
@@ -64,7 +65,7 @@ public class PlayerSizeChange2 : MonoBehaviour
         };
     }
 
-    void updateSize()
+    public void updateSize()
     {
         switch (playerSize)
         {
