@@ -17,8 +17,8 @@ public class PendulumPush : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-            col.gameObject.GetComponent<Rigidbody>().AddForce(speed*col.gameObject.transform.forward, ForceMode.Impulse);
-            col.gameObject.GetComponent<Rigidbody>().AddForce(speed * -col.gameObject.transform.right, ForceMode.Impulse);
+        Vector3 forceDirection = col.gameObject.transform.position - transform.position;
+        col.gameObject.GetComponent<Rigidbody>().AddForce(speed * forceDirection, ForceMode.Impulse);
 
     }
 }
