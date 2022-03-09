@@ -29,11 +29,12 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     [SerializeField] private AudioSource playerDyingSound;
     [SerializeField] private AudioSource walkingSound;
-    [SerializeField] private AudioSource[] jumpSounds;
-    [SerializeField] private AudioSource[] landSounds;
+    [SerializeField] private AudioClip[] jumpClips;
     [SerializeField] private AudioClip[] runClips;
+    [SerializeField] private AudioClip[] landClips;
+    [SerializeField] private AudioClip[] walkClips;
     private AudioSource audioSource;
-    private AudioClip runningClip;
+    private AudioClip clip;
 
 
     private float m_currentV = 0;
@@ -245,8 +246,9 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         if (jumpCooldownOver && m_isGrounded && m_jumpInput)
         {
             m_jumpTimeStamp = Time.time;
-            (jumpSounds[Random.Range(0, 5)]).Play();
             m_rigidBody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
+            clip = GetRandomJumpClip();
+            audioSource.PlayOneShot(clip);
         }
 
         if (!m_isGrounded && m_rigidBody.velocity.y < 0)
@@ -261,7 +263,8 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         if (!m_wasGrounded && m_isGrounded)
         {
             m_animator.SetTrigger("Land");
-            (landSounds[Random.Range(0, 5)]).Play();
+            clip = GetRandomLandClip();
+            audioSource.PlayOneShot(clip);
         }
 
         if (!m_isGrounded && m_wasGrounded)
@@ -269,14 +272,31 @@ public class SimpleSampleCharacterControl : MonoBehaviour
             m_animator.SetTrigger("Jump");
         }
     }
-    private void Step()
+    private void StepRun()
     {
-        runningClip = GetRandomClip();
-        audioSource.PlayOneShot(runningClip);
+        clip = GetRandomRunClip();
+        audioSource.PlayOneShot(clip);
     }
-    private AudioClip GetRandomClip()
+    private void StepWalk()
+    {
+        clip = GetRandomWalkClip();
+        audioSource.PlayOneShot(clip);
+    }
+    private AudioClip GetRandomRunClip()
     {
         return runClips[UnityEngine.Random.Range(0, runClips.Length)];
+    }
+    private AudioClip GetRandomWalkClip()
+    {
+        return walkClips[UnityEngine.Random.Range(0, walkClips.Length)];
+    }
+    private AudioClip GetRandomJumpClip()
+    {
+        return jumpClips[UnityEngine.Random.Range(0, jumpClips.Length)];
+    }
+    private AudioClip GetRandomLandClip()
+    {
+        return landClips[UnityEngine.Random.Range(0, landClips.Length)];
     }
 }
 
