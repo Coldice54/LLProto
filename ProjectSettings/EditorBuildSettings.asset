@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainLobby.unity
     guid: 254c2fe46bc48ec4aa38fa8282ec8451
   - enabled: 1
+    path: Assets/Scenes/NarrationUI.unity
+    guid: bdec5fff6f757134f8af67c4f373c9d6
+  - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: e3f774ecb3500f147a7f7188f8d27ca2
   - enabled: 1

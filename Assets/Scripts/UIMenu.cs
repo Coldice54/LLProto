@@ -27,4 +27,8 @@ public class UIMenu : MonoBehaviour
     public void ClickOnButton(){
         clickSound.Play();
     }
+
+    public void NextScene(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }
