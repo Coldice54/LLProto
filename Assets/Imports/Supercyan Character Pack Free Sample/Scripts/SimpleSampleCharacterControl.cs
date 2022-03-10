@@ -267,21 +267,29 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     }
     private void StepRun()
     {
+        Debug.Log("Run");
         clip = GetRandomRunClip();
         audioSource.PlayOneShot(clip);
     }
     private void StepWalk()
     {
-        clip = GetRandomWalkClip();
-        audioSource.PlayOneShot(clip);
+        Debug.Log("Walk");
+        if (m_rigidBody.velocity.magnitude > 0)
+        {
+            clip = GetRandomWalkClip();
+            audioSource.PlayOneShot(clip);
+        }
+
     }
     private void Jump()
     {
+        Debug.Log("Jump");
         clip = GetRandomJumpClip();
         audioSource.PlayOneShot(clip);
     }
     private void Land()
     {
+        Debug.Log("Land");
         clip = GetRandomLandClip();
         audioSource.PlayOneShot(clip);
     }
