@@ -16089,6 +16089,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba158ff05cf30224f94bfdddec8e7635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &278154355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1808688762047509569, guid: 0e74cf81e6fd82546b4797f71ceffb81, type: 3}
+  m_PrefabInstance: {fileID: 278154353}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &278154356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1470422635518680046, guid: 0e74cf81e6fd82546b4797f71ceffb81, type: 3}
+  m_PrefabInstance: {fileID: 278154353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &279483345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73359,6 +73369,22 @@ MonoBehaviour:
   playerSize: 1
   charController: {fileID: 278154354}
   touchingSizePlatform: 0
+--- !u!114 &1333877998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333877995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b93c349431c2442b6087b140395778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eyes: {fileID: 278154356}
+  hands: {fileID: 278154355}
+  focusMat: {fileID: 2100000, guid: 0d97c63033de0d045b98cc6669ef35cb, type: 2}
+  defocusMat: {fileID: 2100000, guid: 8e6c8d4e4f05fe44b8c2d2b569a5d1bb, type: 2}
 --- !u!4 &1338675763 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 244568048687738560, guid: a2e8d3cc840405d41af5e5523959cd32, type: 3}
@@ -91306,6 +91332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weight
       objectReference: {fileID: 0}
+    - target: {fileID: 1528730059017165869, guid: 0ef68313444adfc4e8201b9b44b6eab1, type: 3}
+      propertyPath: m_TagString
+      value: Pickup
+      objectReference: {fileID: 0}
     - target: {fileID: 1529706133519045515, guid: 0ef68313444adfc4e8201b9b44b6eab1, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -91316,7 +91346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1529706133519045515, guid: 0ef68313444adfc4e8201b9b44b6eab1, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1529706133519045515, guid: 0ef68313444adfc4e8201b9b44b6eab1, type: 3}
       propertyPath: m_LocalScale.z
