@@ -41,7 +41,7 @@ public class PickUpObject : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown("r"))
+        if (Input.GetKeyDown("c"))
         {
 
             if (hasItem == false)
@@ -49,12 +49,12 @@ public class PickUpObject : MonoBehaviour
                 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    Debug.Log("we have a hit");
-                    Debug.Log(hit.collider.gameObject.tag);
+                    //Debug.Log("we have a hit");
+                    //Debug.Log(hit.collider.gameObject.tag);
                     if (hit.collider.gameObject.tag == "Pickup" && hit.distance<5)
                     { //add collider reference otherwise you can't access gameObject!
                         
-                        Debug.Log("hit on pickup obj");
+                        //Debug.Log("hit on pickup obj");
                         pickedUpObject = hit.collider.gameObject;
                         //pickedUpObject.transform.parent = hands.transform;
                         pickedUpObject.transform.position = hands.transform.position - transform.forward;
@@ -67,7 +67,7 @@ public class PickUpObject : MonoBehaviour
             }
             else
             {
-                Debug.Log("about to drop item");
+                //Debug.Log("about to drop item");
                 pickedUpObject.transform.SetParent(null);
                 pickedUpObject.GetComponent<Rigidbody>().useGravity = true;
                 pickedUpObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;

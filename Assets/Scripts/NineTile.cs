@@ -12,7 +12,7 @@ public class NineTile : MonoBehaviour
         int[] indexes = {index, left, right, index - 3, index + 3};
 
         foreach (int ind in indexes){
-            Debug.Log(ind);
+            //Debug.Log(ind);
             if (ind >= 0 && ind <= 8){
                 tiles[ind].changeLight();
             }

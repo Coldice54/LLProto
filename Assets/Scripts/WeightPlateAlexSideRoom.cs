@@ -9,7 +9,7 @@ public class WeightPlateAlexSideRoom : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("collision");
+        //Debug.Log("collision");
         if (collider.gameObject.name == "Weight")
         {
             
