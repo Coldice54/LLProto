@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] Respawnable[] respawnables;
     [SerializeField] PlayerSizeChange2 sizeScript;
     [SerializeField] GameObject pauseUI;
+    [SerializeField] GameObject[] haungsModeItems;
+    [SerializeField] Vector3[] haungsModeSpawnPoints;
+    bool haungsModeActive = false;
+    int spawnPointIndex = 0;
 
     private void Start() {
         checkpointCord = player.gameObject.transform.position;
@@ -49,6 +53,18 @@ public class GameManager : MonoBehaviour
                 Resume();
             } else {
                 Pause();
+            }
+        }
+        if(Input.GetKeyUp("h") && !haungsModeActive) {
+            haungsModeActive = true;
+            foreach(GameObject item in haungsModeItems) {
+                item.SetActive(!item.activeSelf);
+            }
+        }
+        if(Input.GetKeyUp("j") && haungsModeActive) {
+            if (haungsModeSpawnPoints.Length >= (spawnPointIndex + 1)) {
+                player.gameObject.transform.position = haungsModeSpawnPoints[spawnPointIndex];
+                spawnPointIndex = spawnPointIndex + 1;
             }
         }
     }
