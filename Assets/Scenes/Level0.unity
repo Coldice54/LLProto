@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -30595,7 +30595,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 761101837}
-  m_LocalRotation: {x: 0.18910751, y: 0.000000018890205, z: -0.0000000036379209, w: 0.9819564}
+  m_LocalRotation: {x: 0.18910751, y: -0.000000018890205, z: 0.0000000036379209, w: 0.9819564}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -60777,8 +60777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be04ccf37678f2a4e8128c1955d1215f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hint: Those circular buttons on the wall look interesting... maybe try pressing
-    C while they're at Theo's eye level..
+  hint: Press C to interact with buttons at Theo's eye level
   textBox: {fileID: 361432920}
 --- !u!65 &1502822245
 BoxCollider:
