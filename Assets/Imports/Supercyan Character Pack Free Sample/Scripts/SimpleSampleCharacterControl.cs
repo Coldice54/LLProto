@@ -18,11 +18,22 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     [SerializeField] private float m_moveSpeed = 2;
     [SerializeField] private float m_turnSpeed = 200;
     [SerializeField] public float m_jumpForce = 4;
+    [SerializeField] public float m_jumpDownForce = 4;
+    [SerializeField] private float m_moveForce = 10;
+    [SerializeField] private bool m_moveWithForce = true;
 
     [SerializeField] private Animator m_animator = null;
     [SerializeField] private Rigidbody m_rigidBody = null;
 
     [SerializeField] private ControlMode m_controlMode = ControlMode.Direct;
+
+    [SerializeField] private AudioSource playerDyingSound;
+    [SerializeField] private AudioClip[] jumpClips;
+    [SerializeField] private AudioClip[] runClips;
+    [SerializeField] private AudioClip[] landClips;
+    [SerializeField] private AudioClip[] walkClips;
+    private AudioSource audioSource;
+    private AudioClip clip;
 
     private float m_currentV = 0;
     private float m_currentH = 0;
@@ -42,12 +53,13 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     private bool m_isGrounded;
 
     private List<Collider> m_collisions = new List<Collider>();
-    internal float m_jumpDownForce;
 
     private void Awake()
     {
         if (!m_animator) { gameObject.GetComponent<Animator>(); }
         if (!m_rigidBody) { gameObject.GetComponent<Animator>(); }
+        Cursor.visible = false;
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -134,6 +146,16 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
         m_wasGrounded = m_isGrounded;
         m_jumpInput = false;
+
+        if (transform.position.y < -23.5f)
+        {
+            gameObject.SetActive(false);
+            //when we find the particle effectsc:
+            //particalSystem.gameObject.transform.position = transform.position;
+            //particalSystem.gameObject.SetActive(true);
+            playerDyingSound.Play();
+            FindObjectOfType<GameManager>().Respawn();
+        }
     }
 
     private void TankUpdate()
@@ -191,7 +213,22 @@ public class SimpleSampleCharacterControl : MonoBehaviour
             m_currentDirection = Vector3.Slerp(m_currentDirection, direction, Time.deltaTime * m_interpolation);
 
             transform.rotation = Quaternion.LookRotation(m_currentDirection);
-            transform.position += m_currentDirection * m_moveSpeed * Time.deltaTime;
+            if (m_moveWithForce == false)
+            {
+                transform.position += m_currentDirection * m_moveSpeed * Time.deltaTime;
+
+            }
+            else
+            {
+                Vector3 velocityChange = m_currentDirection * m_moveSpeed - m_rigidBody.velocity;
+
+                velocityChange.y = 0;
+
+                m_rigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
+            }
+            //m_rigidBody.velocity = m_currentDirection * m_moveSpeed * Time.deltaTime;
+            //if (!Input.anyKey){
+            // m_rigidBody.velocity = Vector3.zero;}
 
             m_animator.SetFloat("MoveSpeed", direction.magnitude);
         }
@@ -209,6 +246,15 @@ public class SimpleSampleCharacterControl : MonoBehaviour
             m_rigidBody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
         }
 
+        if (!m_isGrounded && m_rigidBody.velocity.y < 0)
+        {
+            m_rigidBody.AddForce(Vector3.down * m_jumpDownForce * 2);
+        }
+        else if (!m_isGrounded && m_rigidBody.velocity.y > 0)
+        {
+            m_rigidBody.AddForce(Vector3.down * m_jumpDownForce);
+        }
+
         if (!m_wasGrounded && m_isGrounded)
         {
             m_animator.SetTrigger("Land");
@@ -218,5 +264,44 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         {
             m_animator.SetTrigger("Jump");
         }
+    }
+    private void StepRun()
+    {
+        clip = GetRandomRunClip();
+        audioSource.PlayOneShot(clip);
+    }
+    private void StepWalk()
+    {
+        if (m_rigidBody.velocity.magnitude > 0)
+        {
+            clip = GetRandomWalkClip();
+            audioSource.PlayOneShot(clip);
+        }
+    }
+    private void Jump()
+    {
+        clip = GetRandomJumpClip();
+        audioSource.PlayOneShot(clip);
+    }
+    private void Land()
+    {
+        clip = GetRandomLandClip();
+        audioSource.PlayOneShot(clip);
+    }
+    private AudioClip GetRandomRunClip()
+    {
+        return runClips[UnityEngine.Random.Range(0, runClips.Length)];
+    }
+    private AudioClip GetRandomWalkClip()
+    {
+        return walkClips[UnityEngine.Random.Range(0, walkClips.Length)];
+    }
+    private AudioClip GetRandomJumpClip()
+    {
+        return jumpClips[UnityEngine.Random.Range(0, jumpClips.Length)];
+    }
+    private AudioClip GetRandomLandClip()
+    {
+        return landClips[UnityEngine.Random.Range(0, landClips.Length)];
     }
 }
