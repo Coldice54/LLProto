@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1540189842613578874, guid: fa75f7cff3267c847a3b04ccaaa5e7d2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 37ad657dab91e494eba33e9a16a3ca1d, type: 2}
     - target: {fileID: 1540189842613578877, guid: fa75f7cff3267c847a3b04ccaaa5e7d2, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1540189842613578878, guid: fa75f7cff3267c847a3b04ccaaa5e7d2, type: 3}
       propertyPath: m_Name
-      value: Button
+      value: MultiButton
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1540189842613578876, guid: fa75f7cff3267c847a3b04ccaaa5e7d2, type: 3}
@@ -77,7 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionRadius: 7
   focusMat: {fileID: 2100000, guid: 0d97c63033de0d045b98cc6669ef35cb, type: 2}
-  defocusMat: {fileID: 2100000, guid: ace2a32c2825d4e489b65e1599a04687, type: 2}
+  defocusMat: {fileID: 2100000, guid: 37ad657dab91e494eba33e9a16a3ca1d, type: 2}
   isLitMat: {fileID: 2100000, guid: ef4a5a69fa1e850409fe40afc4ae479e, type: 2}
   isLit: 0
   controller: {fileID: 0}
