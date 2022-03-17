@@ -18,7 +18,6 @@ public class FallingPlatform : Respawnable
 
     public override void resetGameObject(){
         falling = false;
-        transform.position = originalPosition;
     }
 
     private void Update() {
