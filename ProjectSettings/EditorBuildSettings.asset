@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level4.unity
     guid: 650cd917b306a3748853a89c0165c1b5
+  - enabled: 1
+    path: Assets/Scenes/CloseScene.unity
+    guid: c0d5329e02a6f024c804fa5d050a2e11
   m_configObjects: {}
